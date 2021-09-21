@@ -1,5 +1,7 @@
 {
   "name": "haraka_tfc",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

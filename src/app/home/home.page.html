@@ -1,20 +1,60 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-title>Acceuil</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button class="sign-out" (click)="signOut()" size="small" 
+      fill="clear " color="danger" expand="round">
+        Deconnexion
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-card fixed>
+      <ion-card-subtitle>INFOS DE L'ETUDIANT</ion-card-subtitle>
+      <div>
+        <p>Matricule : 
+          <ion-chip color="secondary" outline="true">
+            <ion-label>{{ student.matricule }}</ion-label>
+          </ion-chip>
+        </p>
+          <p>Faculté : 
+            <ion-chip color="primary">
+              <ion-label>{{ faculty.fac_label }}</ion-label>
+            </ion-chip>
+          </p>
+          <p>Promotion : 
+            <ion-chip color="warning">
+              <ion-label>{{ promotion.label }}</ion-label>
+            </ion-chip>
+          </p>
+      </div>
+    </ion-card>
+  </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item-divider color="light" fixed>
+    <ion-icon name="list-sharp" slot="start"></ion-icon>
+    <h6>
+      Cours à évalués
+    </h6>
+  </ion-item-divider>
+
+  <ion-list  *ngFor="let course of courses">
+    <ion-item button="true" detail lines="full" (click)="evaluate(course)">
+      <ion-label class="ion-text-wrap"> {{ course.label }} </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div id="container" *ngIf="!courses" >
+    <p>Aucun cours disponible pour l'évaluation pour vous !</p>
+  </div>  
+
+  
 </ion-content>

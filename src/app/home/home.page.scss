@@ -25,3 +25,35 @@
 #container a {
   text-decoration: none;
 }
+
+ion-item-divider {
+  margin-bottom: 10px;
+}
+
+ion-list {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+ion-item {
+  padding-left: -2px !important;
+  margin-left: -2px !important;
+}
+
+ion-label {
+  font-size: .8em !important;
+}
+
+ion-item-divider {
+
+  padding: 5px 10px;
+
+  h6, ion-icon {
+      padding: 0 3px !important;
+      margin: 0 !important;
+  }
+}
+
+.sign-out {
+  font-size: 10px !important;
+}

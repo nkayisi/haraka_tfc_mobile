@@ -24,3 +24,33 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-card-subtitle{
+    background-color: gray;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    margin-bottom: 5px;
+}
+
+
+ion-card {
+    div{
+        padding: 4px 6px;
+    }
+    margin: 10px !important;
+    p {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+.precipal {
+    background-color: #1ce;
+    opacity: .5;
+}
+
+.toast-danger{
+    color: black;
+    opacity: .8;
+}

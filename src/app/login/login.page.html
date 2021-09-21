@@ -1,0 +1,24 @@
+
+<ion-content>
+
+  <div class="top-site"></div>
+  <div class="bottom-side"></div>
+
+  <div class="login-content">
+
+    <h1>Login</h1>
+
+    <p>Veillez entrer votre matricule pour l'évaluation !</p>
+  
+    <ion-item>
+      <ion-label position="floating">Numéro matricule <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input [(ngModel)]="matricule" type="text"></ion-input>
+    </ion-item>
+
+    <ion-button shape="round" (click)="login(null)" color="dark">
+      Evaluer
+    </ion-button>
+
+  </div>
+
+</ion-content>

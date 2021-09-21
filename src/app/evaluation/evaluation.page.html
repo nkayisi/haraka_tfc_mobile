@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Evaluation</ion-title>
+
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-card>
+      <ion-card-subtitle>DETAILS DU COURS</ion-card-subtitle>
+      <div>
+        <p>Cours : 
+          <ion-chip color="secondary" outline="true">
+            <ion-label> {{ course.label }} </ion-label>
+          </ion-chip>
+        </p>
+      </div>
+    </ion-card>
+  
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-slides #slides [options]="slideOpts" (ionSlideDidChange)="ionSlideDidChange(slides)">
+    <ion-slide class="first-slide">
+      <div class="first">
+        <h5>Assurez-vouz d'avoir selectionner une reponse avant de passer à la question suivante !</h5>
+      </div>
+    </ion-slide>
+    <ion-slide *ngFor="let question of questions">
+
+      <ion-list>
+
+        <ion-list-header>
+          <h5>{{ question.question_label }}</h5>
+        </ion-list-header>
+    
+        <ion-radio-group value="responseGroup">
+      
+          <ion-item *ngFor="let response of responses" lines="none">
+            <ion-label class="ion-text-wrap">{{ response.label }}</ion-label>
+            <!-- (click)="radioEvent(radio)" -->
+            <ion-radio #radio slot="start" [value]="response.value" (ionFocus)="ionFocus(radio)"></ion-radio>
+          </ion-item>
+    
+        </ion-radio-group>
+    
+      </ion-list>
+
+    </ion-slide>
+
+    <ion-slide class="last-slide">
+
+      <div>
+        <h5>Merci de laisser un petit commentaire pour ce cours !</h5>
+      
+        <ion-textarea [(ngModel)]="comment" rows="7" placeholder="Tapez votre text ici !"></ion-textarea>
+      </div>
+      
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
+
+<ion-footer fixed>
+  <ion-toolbar>
+
+    <ion-button (click)="beginEvaluation()" *ngIf="firstSlide" color="secondary" fill="outline" shape="round">Commencer</ion-button>
+
+    <ion-grid *ngIf="questionSlide" fixed>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button size="medium" (click)="previousQuestion()" expand="block" fill="outline" shape="round" color="secondary">
+            Précédant
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button size="medium" (click)="nextQuestion()" expand="block" shape="round" color="secondary">
+            Suivant
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-button *ngIf="lastSlide" (click)="sendEvaluationResult()"  color="secondary" fill="outline" shape="round">Envoyer</ion-button>
+
+  </ion-toolbar>
+</ion-footer>
